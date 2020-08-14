@@ -43,7 +43,7 @@ st.write("""
 #the line below is for the drop down menu for tag selection. We will switch df_posts with df_all_tag.
 data_dic, iterate_key, curr_key = load_data("StackOverflow_new_tags.csv")
 #importing tags list
-df_tags = pd.read_excel("Tags.xlsx")
+df_tags = pd.read_csv("Tags.csv")
 tags_list = df_tags.Tags.tolist()
 
 #remove the tagged post from the dataset and reset
@@ -68,7 +68,7 @@ st.write(data_dic[curr_key])
 
 #writes the tagged post to a excel file
 if st.button("Submit"):
-    book = load_workbook('LabeledData.xlsx')
-    sheet = book.active
-    sheet.append((curr_key, data_dic[curr_key], str(options)))
-    book.save('LabeledData.xlsx')
+    df = pd.read_csv('LabeledData.csv')
+    row_to_append = pd.DataFrame({df.columns[0]: [curr_key], df.columns[1]: [data_dic[curr_key]], df.columns[2]: [options]})
+    df = df.append(row_to_append)
+    df.to_csv('LabeledData.csv', index=False)
