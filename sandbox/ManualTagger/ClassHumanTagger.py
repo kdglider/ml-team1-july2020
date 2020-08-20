@@ -5,8 +5,8 @@ from openpyxl import Workbook, load_workbook
 import SessionState
 
 class MannualTagger:
-    def __init__(self, data_frame):
-        self.df_posts = data_frame
+    def __init__(self):
+        self.df_posts
         #self.df_posts.to_csv("Initial_Data.csv")
 
         self.data_dic
@@ -42,7 +42,7 @@ class MannualTagger:
         #curr_key: the tracker that keeps track of the current topic title that we are on
         self.curr_key = next(iterate_key)
 
-    def run_manual_tagger(self):
+    def run(self, dataframe):
     	while !self.df_posts.empty:
             """
             Below is mainly code for StreamLit display.
@@ -50,6 +50,7 @@ class MannualTagger:
             st.write("""
             ** ML July Team1 Manual Tagging App**
             """)
+            self.df_posts = dataframe
 
             #the line below is for the drop down menu for tag selection. We will switch df_posts with df_all_tag.
             self.load_data(self.df_posts)
