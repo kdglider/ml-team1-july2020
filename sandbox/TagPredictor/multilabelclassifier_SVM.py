@@ -18,7 +18,7 @@ class MultilabelClassifier_SVM(Classifier):
 
         # Classifier - Algorithm - SVM
         # fit the training dataset on the classifier
-        self.model = MultiOutputClassifier(SVC(C=1.0, kernel=self.kernel, degree=3, gamma='auto'))
+        self.model = MultiOutputClassifier(SVC(C=1.0, kernel=self.kernel, degree=3, gamma='auto', probability=True))
         self.model.fit(Train_X_Tfidf, Train_Y)
         # predict the labels on validation dataset
         #predictions_SVM = self.model.predict(Test_X_Tfidf)
@@ -29,6 +29,7 @@ class MultilabelClassifier_SVM(Classifier):
 
     def predict(self, df):
         predictions = self.model.predict(df)
-        confidenceList = np.amin(self.model.predict_proba(df), axis=1)
+        #confidenceList = np.amin(self.model.predict_proba(df), axis=1)
+        confidenceList = self.model.predict_proba(df)
         
         return predictions, confidenceList
