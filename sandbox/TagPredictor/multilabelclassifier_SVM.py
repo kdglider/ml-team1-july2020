@@ -28,8 +28,11 @@ class MultilabelClassifier_SVM(Classifier):
         return self.model
 
     def predict(self, df):
-        predictions = self.model.predict(df)
+        #prediction = self.model.predict(df)
         #confidenceList = np.amin(self.model.predict_proba(df), axis=1)
-        confidenceList = self.model.predict_proba(df)
+        rawList = self.model.predict_proba(df)
+        probabilityMatrix = np.array(rawList)[:, :, 1]
+
+        predictionMatrix = np.round_(probabilityMatrix)
         
-        return predictions, confidenceList
+        return predictionMatrix, probabilityMatrix

@@ -54,5 +54,5 @@ class TagPredictor:
         X = df
         X_Tfidf = self.Tfidf_vect.transform(X)
         matrix, confidenceList = self.model.predict(X_Tfidf)
-        labels = self.mlb.inverse_transform(matrix)
+        #labels = self.mlb.inverse_transform(matrix)
         return labels, confidenceList
