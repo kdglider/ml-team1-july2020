@@ -72,7 +72,9 @@ class MannualTagger:
 
             #remove the tagged post from the dataset and reset
             if st.button("Reset"):
-                self.df_posts = self.df_posts.iloc[1:]
+                df_posts = pd.read_csv("StackOverflow_new_tags.csv")
+                df_posts = df_posts.iloc[1:]
+                df_posts.to_csv("StackOverflow_new_tags.csv")
 
             #displays next topic
             self.session = SessionState.get(run_id=0)
@@ -92,6 +94,7 @@ class MannualTagger:
             if st.button("Submit"):
                 row_to_append = pd.DataFrame({self.df_labeled.columns[0]: [self.curr_key], self.df_labeled.columns[1]: [self.data_dic[self.curr_key]], self.df_labeled.columns[2]: [options]})
                 self.df_labeled = self.df_labeled.append(row_to_append)
+                df.to_csv('LabeledData.csv', index=False)
          
         
 
