@@ -13,7 +13,7 @@ class TagPredictor:
     corpus = None
 
     def __init__(self, classifier, corpus):
-        self.model = classifier
+        self.model = classifier()
         self.corpus = corpus
 
         np.random.seed(500)
@@ -45,7 +45,6 @@ class TagPredictor:
         # Vectorize topic bags of words
         Train_X_Tfidf = self.Tfidf_vect.transform(self.corpus['Bag_of_Words'])
         #Test_X_Tfidf = self.Tfidf_vect.transform(Test_X)
-        
         # Train model
         self.model.train(Train_X_Tfidf, Y_matrix)
         
