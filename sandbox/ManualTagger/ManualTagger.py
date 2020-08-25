@@ -10,7 +10,7 @@ class ManualTagger:
         self.groundTruthDB = data_frame
         
         
-    def tagTopics(self, topicsDF):
+    def run(self, topicsDF):
         #filt = (self.groundTruthDF['Bag_of_Words'] == bagOfWords)
         #tag_in_df = self.groundTruthDF.loc[filt, 'Tags'] #filt gives us the row we want, and 'Tag' gives us the column that we want
         
