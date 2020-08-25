@@ -52,6 +52,11 @@ class Annotator:
     confidenceThreshold = 0.95      # Prediction confidence threshold to determine if a topic should be passed to ManualTagger
 
 
+    '''
+    @brief      Class constructor
+    @param      datafile    CSV dataset file that contains topic text and tags
+    @return     None
+    '''
     def __init__(self, datafile):
         # Create databases
         self.groundTruthDB, self.labeledDB, self.unlabeledDB = self.createDatabases(datafile)
