@@ -6,15 +6,15 @@
 
 # Add other folders to the system path
 import sys
-sys.path.append('/content/drive/My Drive/Github/ml-team1-july2020/sandbox/TagPredictor')
-sys.path.append('/content/drive/My Drive/Github/ml-team1-july2020/sandbox/ManualTagger')
+sys.path.append('/content/drive/My Drive/Github/ml-team1-july2020/TagPredictor')
+sys.path.append('/content/drive/My Drive/Github/ml-team1-july2020/ManualTagger')
 
 # Import component classes in other folders
-#from sandbox.TagPredictor.classifier import Classifier
-#from sandbox.TagPredictor.classifier_SVM import Classifier_SVM
-from sandbox.TagPredictor.multilabelclassifier_SVM import MultilabelClassifier_SVM
-from sandbox.TagPredictor.TagPredictor import TagPredictor
-from sandbox.ManualTagger.ManualTagger import ManualTagger
+#from TagPredictor.classifier import Classifier
+#from TagPredictor.classifier_SVM import Classifier_SVM
+from TagPredictor.multilabelclassifier_SVM import MultilabelClassifier_SVM
+from TagPredictor.TagPredictor import TagPredictor
+from ManualTagger.ManualTagger import ManualTagger
 
 import nltk
 nltk.download('stopwords')
@@ -233,7 +233,7 @@ class Annotator:
 
 if __name__ == '__main__':
     # Path to CSV datafile
-    datafile = '/content/drive/My Drive/Github/ml-team1-july2020/sandbox/Webscraper/StackOverflow_new_tags.csv'
+    datafile = '/content/drive/My Drive/Github/ml-team1-july2020/datasets/Team1Dataset.csv'
 
     # Instantiate Annotator object
     annotator = Annotator(datafile)

@@ -45,7 +45,7 @@ class MultilabelClassifier_SVM(Classifier):
 
 
     '''
-    @brief      Predicts an indicator matric and confidence level for each topic
+    @brief      Predicts an indicator matrix and confidence level for each topic
     @param      df                  Pandas dataframe of topic text
     @return     predictionMatrix    NumPy indicator matrix for the predicted tags
     @return     confidenceList      NumPy array of prediction confidence scores for each topic
