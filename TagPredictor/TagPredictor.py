@@ -74,7 +74,7 @@ class TagPredictor:
 
 
     '''
-    @brief      Trains the model using the database
+    @brief      Predicts a list of tags and confidence level for each topic
     @param      df                  Pandas dataframe of topic text
     @return     labels              List of predicted tuples of tags for each topic
     @return     confidenceList      NumPy array of prediction confidence scores for each topic
