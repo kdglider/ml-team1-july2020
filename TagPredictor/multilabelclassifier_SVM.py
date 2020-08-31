@@ -55,13 +55,21 @@ class MultilabelClassifier_SVM(Classifier):
         rawList = self.model.predict_proba(df)
         
         # Convert to NumPy array
-        # Extract relevant output
-        # Transpose and round probabilities to create an indicator matrix
-        predictionMatrix = np.round_(np.array(rawList)[:, :, 1]).T
+        # Extract relevant output and transpose
+        probabilityMatrix = np.array(rawList)[:, :, 1].T
+        
+        # Round probabilities to create an indicator matrix
+        predictionMatrix = np.round_(probabilityMatrix)
+        
+        # If no tags are predicted for a topic, assign one tag based on highest probability
+        for i in range(predictionMatrix.shape[0]):
+            if (np.sum(predictionMatrix[i]) == 0):
+                maxProbabilityIndex = np.argmax(predictionMatrix[i])
+                predictionMatrix[i][maxProbabilityIndex] = 1
         
         # Extract relevant probability output
         # Average confidences across all categories for all samples
-        probabilityMatrix = np.amax(np.array(rawList), axis=2)
-        confidenceList = np.average(probabilityMatrix.T, axis=1)
+        confidenceMatrix = np.amax(np.array(rawList), axis=2)
+        confidenceList = np.average(confidenceMatrix.T, axis=1)
         
         return predictionMatrix, confidenceList
