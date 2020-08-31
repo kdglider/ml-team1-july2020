@@ -52,7 +52,7 @@ class TagPredictor:
         
         #np.set_printoptions(threshold=np.inf)
         #print(matrix[0])
-        print(self.mlb.classes_)
+        #print(self.mlb.classes_)
         
         #train, test, Train_Y, Test_Y = train_test_split(self.database, Y_matrix, test_size=0.3, shuffle=True)
         #Train_X = train['Bag_of_Words']
