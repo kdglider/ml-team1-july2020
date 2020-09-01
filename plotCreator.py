@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 results1 = pd.read_csv('Results/Annotator_Statistics_1090_95.csv').to_numpy().T
 results2 = pd.read_csv('Results/Annotator_Statistics_2080_95_1.csv').to_numpy().T
 results3 = pd.read_csv('Results/Annotator_Statistics_3070_95.csv').to_numpy().T
-results4 = pd.read_csv('Results/Annotator_Statistics_2080_70.csv').to_numpy().T
-results5 = pd.read_csv('Results/Annotator_Statistics_2080_80_2.csv').to_numpy().T
+results4 = pd.read_csv('Results/Annotator_Statistics_2080_80_2.csv').to_numpy().T
+results5 = pd.read_csv('Results/Annotator_Statistics_2080_82_1.csv').to_numpy().T
 results6 = pd.read_csv('Results/Annotator_Statistics_2080_85_2.csv').to_numpy().T
 results7 = pd.read_csv('Results/Annotator_Statistics_2080_90_2.csv').to_numpy().T
 
@@ -103,12 +103,10 @@ plt.legend()
 
 
 # Database comparison plots (Confidence Calculation: Average)
-iteration1 = results4[1]
+iteration = results4[1]
 labeledSize1 = results4[2]
 unlabeledSize1 = results4[3]
 fscore1 = results4[6]
-
-iteration2 = results5[1]
 labeledSize2 = results5[2]
 unlabeledSize2 = results5[3]
 fscore2 = results5[6]
@@ -121,14 +119,14 @@ fscore4 = results7[6]
 
 fig = plt.figure(figsize=(14.4, 4.8))
 sp1 = fig.add_subplot(1,2,1)
-sp1.plot(iteration1, unlabeledSize1, c='r', ls=':', label='ULDB (70)')
-sp1.plot(iteration1, labeledSize1, c='b', ls=':', label='LDB (70)')
-sp1.plot(iteration2, unlabeledSize2, c='r', ls='-.', label='ULDB (80)')
-sp1.plot(iteration2, labeledSize2, c='b', ls='-.', label='LDB (80)')
-sp1.plot(iteration2, unlabeledSize3, c='r', ls='--', label='ULDB (85)')
-sp1.plot(iteration2, labeledSize3, c='b', ls='--', label='LDB (85)')
-sp1.plot(iteration2, unlabeledSize4, c='r', ls='-', label='ULDB (90)')
-sp1.plot(iteration2, labeledSize4, c='b', ls='-', label='LDB (90)')
+sp1.plot(iteration, unlabeledSize1, c='r', ls=':', label='ULDB (70)')
+sp1.plot(iteration, labeledSize1, c='b', ls=':', label='LDB (70)')
+sp1.plot(iteration, unlabeledSize2, c='r', ls='-.', label='ULDB (80)')
+sp1.plot(iteration, labeledSize2, c='b', ls='-.', label='LDB (80)')
+sp1.plot(iteration, unlabeledSize3, c='r', ls='--', label='ULDB (85)')
+sp1.plot(iteration, labeledSize3, c='b', ls='--', label='LDB (85)')
+sp1.plot(iteration, unlabeledSize4, c='r', ls='-', label='ULDB (90)')
+sp1.plot(iteration, labeledSize4, c='b', ls='-', label='LDB (90)')
 
 plt.title('Database Sizes')
 plt.xlabel('Active Learning Iteration')
@@ -136,10 +134,10 @@ plt.ylabel('Database Size (Samples)')
 plt.legend()
 
 sp2 = fig.add_subplot(1,2,2)
-sp2.plot(iteration1, fscore1, c='g', ls=':', label='F1 Score (70 Threshold)')
-sp2.plot(iteration2, fscore2, c='g', ls='-.', label='F1 Score (80 Threshold)')
-sp2.plot(iteration2, fscore3, c='g', ls='--', label='F1 Score (85 Threshold)')
-sp2.plot(iteration2, fscore4, c='g', ls='-', label='F1 Score (90 Threshold)')
+sp2.plot(iteration, fscore1, c='g', ls=':', label='F1 Score (70 Threshold)')
+sp2.plot(iteration, fscore2, c='g', ls='-.', label='F1 Score (80 Threshold)')
+sp2.plot(iteration, fscore3, c='g', ls='--', label='F1 Score (85 Threshold)')
+sp2.plot(iteration, fscore4, c='g', ls='-', label='F1 Score (90 Threshold)')
 
 plt.title('F1 Score Comparison')
 plt.xlabel('Active Learning Iteration')
