@@ -71,9 +71,9 @@ class MultilabelClassifier_SVM(Classifier):
         confidenceMatrix = np.amax(np.array(rawList), axis=2).T
         
         # Average confidences across all categories for all samples
-        confidenceList = np.average(confidenceMatrix, axis=1)
+        #confidenceList = np.average(confidenceMatrix, axis=1)
         
         # Average confidences for bottom 5 categories for all samples
-        #confidenceList = np.average(np.sort(confidenceMatrix)[:,0:5], axis=1)
+        confidenceList = np.average(np.sort(confidenceMatrix)[:,0:5], axis=1)
         
         return predictionMatrix, confidenceList
