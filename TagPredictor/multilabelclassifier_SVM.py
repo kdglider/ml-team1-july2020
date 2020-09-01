@@ -55,7 +55,7 @@ class MultilabelClassifier_SVM(Classifier):
         rawList = self.model.predict_proba(df)
         
         # Convert to NumPy array
-        # Extract relevant output and transpose
+        # Extract relevant output for indicator matrix generation and transpose
         probabilityMatrix = np.array(rawList)[:, :, 1].T
         
         # Round probabilities to create an indicator matrix
@@ -67,9 +67,13 @@ class MultilabelClassifier_SVM(Classifier):
                 maxProbabilityIndex = np.argmax(predictionMatrix[i])
                 predictionMatrix[i][maxProbabilityIndex] = 1
         
-        # Extract relevant probability output
+        # Extract relevant probability output for confidence calculation and transpose
+        confidenceMatrix = np.amax(np.array(rawList), axis=2).T
+        
         # Average confidences across all categories for all samples
-        confidenceMatrix = np.amax(np.array(rawList), axis=2)
-        confidenceList = np.average(confidenceMatrix.T, axis=1)
+        confidenceList = np.average(confidenceMatrix, axis=1)
+        
+        # Average confidences for bottom 5 categories for all samples
+        #confidenceList = np.average(np.sort(confidenceMatrix)[:,0:5], axis=1)
         
         return predictionMatrix, confidenceList
